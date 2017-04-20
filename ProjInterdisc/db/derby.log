@@ -1,0 +1,31 @@
+Thu Apr 20 08:41:57 BRT 2017 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+----------------------------------------------------------------
+Thu Apr 20 08:41:57 BRT 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-015b-8b2b-3781-00004499236b
+no diretório de banco de dados C:\Temp\projeto-interdisciplinar\ProjInterdisc\db\Banco_Proj 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=C:\Temp\glassfish-4.1\glassfish4\javadb
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Temp\projeto-interdisciplinar\ProjInterdisc\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Thu Apr 20 08:42:10 BRT 2017:
+Encerrando a instância a816c00e-015b-8b2b-3781-00004499236b
+Thu Apr 20 08:42:10 BRT 2017 Thread[DRDAConnThread_3,5,main] (DATABASE = Banco_Proj), (DRDAID = {2}), Banco de dados 'Banco_Proj' fechado.
+----------------------------------------------------------------
+Thu Apr 20 08:42:26 BRT 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 560740aa-015b-8b2b-3781-00004499236b
+no diretório de banco de dados C:\Temp\projeto-interdisciplinar\ProjInterdisc\db\Banco_Proj 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=C:\Temp\glassfish-4.1\glassfish4\javadb
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Temp\projeto-interdisciplinar\ProjInterdisc\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
