@@ -63,3 +63,16 @@ java.sql.SQLException: Ocorreu uma falha de autenticação da conexão.  Motivo: Au
 ============= end nested exception, level (1) ===========
 Cleanup action completed
 Sun Apr 30 16:02:31 BRT 2017 Thread[DRDAConnThread_2,5,main] (DATABASE = Banco_Proj), (DRDAID = {1}), Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
+----------------------------------------------------------------
+Sun Apr 30 16:10:01 BRT 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 888c4022-015b-c03e-27d4-ffffc0f8a2df
+no diretório de banco de dados C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db\sun-appserv-samples 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=C:\Users\lgd25\Documents\glassfish4\javadb
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''

@@ -21,7 +21,7 @@ import javax.persistence.Query;
 @LocalBean
 public class NegociacaoDAO implements GenericDAO<Negociacao>{
 
-    @PersistenceContext(unitName = "ModuloOrcamento-ejbPU", type=PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "ProjInterdisc-ejbPU", type=PersistenceContextType.EXTENDED)
     EntityManager em;
     
     @Override

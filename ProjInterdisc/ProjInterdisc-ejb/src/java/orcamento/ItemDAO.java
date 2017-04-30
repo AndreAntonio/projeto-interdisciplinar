@@ -22,7 +22,7 @@ import javax.persistence.Query;
 
 public class ItemDAO implements GenericDAO<Item> {
 
-    @PersistenceContext(unitName = "ModuloOrcamento-ejbPU", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName = "ProjInterdisc-ejbPU", type = PersistenceContextType.EXTENDED)
     EntityManager em;
     
     @Override

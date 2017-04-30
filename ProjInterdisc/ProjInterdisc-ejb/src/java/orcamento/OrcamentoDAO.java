@@ -22,7 +22,7 @@ import javax.persistence.Query;
 @LocalBean
 public class OrcamentoDAO implements GenericDAO<Orcamento> {
 
-    @PersistenceContext(unitName="ModuloOrcamento-ejbPU", type = PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName="ProjInterdisc-ejbPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
     
     @Override
