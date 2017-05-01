@@ -1,78 +1,14 @@
-Sun Apr 30 16:02:30 BRT 2017 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Mon May 01 09:10:31 BRT 2017 : Apache Derby Network Server - 10.10.2.0 - (1582446) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Sun Apr 30 16:02:30 BRT 2017:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-015b-c03e-27d4-ffffc0f8a2df
-no diretório de banco de dados C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db\Banco_Proj 
-
+Mon May 01 09:10:31 BRT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-c3eb-55e6-fffffc7691d1 
+on database directory C:\Users\Mariana\Downloads\projeto-interdisciplinar\ProjInterdisc\db\Banco_Proj with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/Mariana/Downloads/glassfish-4.1/glassfish4/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=C:\Users\lgd25\Documents\glassfish4\javadb
-os.name=Windows 10
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Users\Mariana\Downloads\glassfish-4.1\glassfish4\javadb
+os.name=Windows 7
 os.arch=amd64
-os.version=10.0
-derby.system.home=C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db
-Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-Sun Apr 30 16:02:31 BRT 2017 Thread[DRDAConnThread_2,5,main] (XID = 225), (SESSIONID = 0), (DATABASE = Banco_Proj), (DRDAID = {1}), Cleanup action starting
-java.sql.SQLNonTransientConnectionException: Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
-	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.Driver20.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-Caused by: java.sql.SQLException: Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	... 19 more
-============= begin nested exception, level (1) ===========
-java.sql.SQLException: Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
-	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.newSQLException(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.checkUserCredentials(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
-	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
-	at org.apache.derby.jdbc.Driver20.connect(Unknown Source)
-	at org.apache.derby.jdbc.EmbeddedDriver.connect(Unknown Source)
-	at org.apache.derby.impl.drda.Database.makeConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.getConnFromDatabaseName(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.verifyUserIdPassword(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseSECCHK(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.parseDRDAConnection(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.processCommands(Unknown Source)
-	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
-============= end nested exception, level (1) ===========
-Cleanup action completed
-Sun Apr 30 16:02:31 BRT 2017 Thread[DRDAConnThread_2,5,main] (DATABASE = Banco_Proj), (DRDAID = {1}), Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
-----------------------------------------------------------------
-Sun Apr 30 16:10:01 BRT 2017:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 888c4022-015b-c03e-27d4-ffffc0f8a2df
-no diretório de banco de dados C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db\sun-appserv-samples 
-
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_101-b13
-user.dir=C:\Users\lgd25\Documents\glassfish4\javadb
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db
-Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+os.version=6.1
+derby.system.home=C:\Users\Mariana\Downloads\projeto-interdisciplinar\ProjInterdisc\db
+Database Class Loader started - derby.database.classpath=''
