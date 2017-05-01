@@ -5,6 +5,8 @@
  */
 package orcamento;
 
+import Entidades.MaoDeObra;
+import Entidades.Material;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -33,6 +36,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Item.findByDescricao", query = "SELECT i FROM Item i WHERE i.descricao = :descricao")
     , @NamedQuery(name = "Item.findByValor", query = "SELECT i FROM Item i WHERE i.valor = :valor")})
 public class Item implements Serializable {
+
+    @JoinColumn(name = "ID_ITEM", referencedColumnName = "ID_MAO_DE_OBRA")
+    @OneToOne(optional = false)
+    private MaoDeObra maoDeObra;
+    @JoinColumn(name = "ID_ITEM", referencedColumnName = "ID_MATERIAL")
+    @OneToOne(optional = false)
+    private Material material;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -112,6 +122,22 @@ public class Item implements Serializable {
     @Override
     public String toString() {
         return "orcamento.Item[ idItem=" + idItem + " ]";
+    }
+
+    public MaoDeObra getMaoDeObra() {
+        return maoDeObra;
+    }
+
+    public void setMaoDeObra(MaoDeObra maoDeObra) {
+        this.maoDeObra = maoDeObra;
+    }
+
+    public Material getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(Material material) {
+        this.material = material;
     }
     
 }

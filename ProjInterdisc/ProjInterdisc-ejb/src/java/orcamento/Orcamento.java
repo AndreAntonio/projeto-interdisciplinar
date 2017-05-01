@@ -5,10 +5,14 @@
  */
 package orcamento;
 
+import Contrato.Contrato;
+import Entidades.Servico;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +21,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -38,6 +45,20 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Orcamento.findByStatus", query = "SELECT o FROM Orcamento o WHERE o.status = :status")
     , @NamedQuery(name = "Orcamento.findByDatValidade", query = "SELECT o FROM Orcamento o WHERE o.datValidade = :datValidade")})
 public class Orcamento implements Serializable {
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "VALORTOT")
+    private Double valortot;
+    @Size(max = 50)
+    @Column(name = "TEMPOTOT")
+    private String tempotot;
+    @Column(name = "VALIDADE")
+    @Temporal(TemporalType.DATE)
+    private Date validade;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
+    private Contrato contrato;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
+    private Servico servico;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -159,6 +180,46 @@ public class Orcamento implements Serializable {
     @Override
     public String toString() {
         return "orcamento.Orcamento[ idOrcamento=" + idOrcamento + " ]";
+    }
+
+    public Double getValortot() {
+        return valortot;
+    }
+
+    public void setValortot(Double valortot) {
+        this.valortot = valortot;
+    }
+
+    public String getTempotot() {
+        return tempotot;
+    }
+
+    public void setTempotot(String tempotot) {
+        this.tempotot = tempotot;
+    }
+
+    public Date getValidade() {
+        return validade;
+    }
+
+    public void setValidade(Date validade) {
+        this.validade = validade;
+    }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
     
 }

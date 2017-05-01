@@ -34,6 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Negociacao.findByStatus", query = "SELECT n FROM Negociacao n WHERE n.status = :status")})
 public class Negociacao implements Serializable {
 
+    @Size(max = 144)
+    @Column(name = "PEDIDO")
+    private String pedido;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -112,6 +116,14 @@ public class Negociacao implements Serializable {
     @Override
     public String toString() {
         return "orcamento.Negociacao[ idNegociacao=" + idNegociacao + " ]";
+    }
+
+    public String getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(String pedido) {
+        this.pedido = pedido;
     }
     
 }

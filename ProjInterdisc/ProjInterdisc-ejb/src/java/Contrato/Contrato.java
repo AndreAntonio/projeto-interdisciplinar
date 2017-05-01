@@ -5,6 +5,7 @@
  */
 package Contrato;
 
+import Entidades.Usuario;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -12,24 +13,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import orcamento.Orcamento;
 
 /**
  *
- * @author 31546463
+ * @author Mariana
  */
 @Entity
 @Table(name = "CONTRATO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c")
-    , @NamedQuery(name = "Contrato.findByIdContrato", query = "SELECT c FROM Contrato c WHERE c.idContrato = :idContrato")})
+    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c"),
+    @NamedQuery(name = "Contrato.findByIdContrato", query = "SELECT c FROM Contrato c WHERE c.idContrato = :idContrato"),
+    @NamedQuery(name = "Contrato.findByTermodocontrato", query = "SELECT c FROM Contrato c WHERE c.termodocontrato = :termodocontrato")})
 public class Contrato implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,23 +41,24 @@ public class Contrato implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_CONTRATO")
     private Long idContrato;
-    @Basic(optional = false)
-    @NotNull
-    @Lob
-    @Size(min = 1, max = 32700)
-    @Column(name = "TERMO_CONTRATO")
-    private String termoContrato;
+    @Size(max = 1000)
+    @Column(name = "TERMODOCONTRATO")
+    private String termodocontrato;
+    @JoinColumn(name = "ID_CONTRATO", referencedColumnName = "ID_ORCAMENTO", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Orcamento orcamento;
+    @JoinColumn(name = "ID_CONTRATO", referencedColumnName = "ID_TERMO", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private TermoDeAceite termoDeAceite;
+    @JoinColumn(name = "ID_CONTRATO", referencedColumnName = "ID_USUARIO", insertable = false, updatable = false)
+    @OneToOne(optional = false)
+    private Usuario usuario;
 
     public Contrato() {
     }
 
     public Contrato(Long idContrato) {
         this.idContrato = idContrato;
-    }
-
-    public Contrato(Long idContrato, String termoContrato) {
-        this.idContrato = idContrato;
-        this.termoContrato = termoContrato;
     }
 
     public Long getIdContrato() {
@@ -65,12 +69,36 @@ public class Contrato implements Serializable {
         this.idContrato = idContrato;
     }
 
-    public String getTermoContrato() {
-        return termoContrato;
+    public String getTermodocontrato() {
+        return termodocontrato;
     }
 
-    public void setTermoContrato(String termoContrato) {
-        this.termoContrato = termoContrato;
+    public void setTermodocontrato(String termodocontrato) {
+        this.termodocontrato = termodocontrato;
+    }
+
+    public Orcamento getOrcamento() {
+        return orcamento;
+    }
+
+    public void setOrcamento(Orcamento orcamento) {
+        this.orcamento = orcamento;
+    }
+
+    public TermoDeAceite getTermoDeAceite() {
+        return termoDeAceite;
+    }
+
+    public void setTermoDeAceite(TermoDeAceite termoDeAceite) {
+        this.termoDeAceite = termoDeAceite;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
