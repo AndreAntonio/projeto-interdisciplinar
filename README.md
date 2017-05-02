@@ -19,7 +19,7 @@
   
 * Módulo 3 : Orçamento e Gestão de Orçamento
 
-  * Lucca
+  * Lucca - Usuarios utilizados: Lucca2510, lgd2510, 31520731
   * Gabriel
   * Fernando Goia
   
