@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Navegação entre modulos do sistema</h1>
+        <a href="orcamento/orcamento.jsp">Orçamento</a>
+        
     </body>
 </html>
