@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.pi.controller.command;
-
+import Avaliacao.AvaliacaoDAO;
+import Afiliacao.Usuario;
+import Servico.Servico;
 import Contrato.Contrato;
 import Contrato.ContratoDAO;
-import Entidades.Cliente;
-import Entidades.Fornecedor;
-import Entidades.MaoDeObra;
-import Entidades.PessoaFisica;
-import Entidades.PessoaJuridica;
-import Entidades.Servico;
-import Entidades.Usuario;
+import orcamento.OrcamentoDAO;
+import Pagamento.PagamentoDAO;
+import Servico.ServicoDAO;
+import Afiliacao.UsuarioDAO;
+import Avaliacao.Avaliacao;
+
+import orcamento.Orcamento;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,42 +19,44 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import orcamento.Orcamento;
-import orcamento.OrcamentoDAO;
 
 /**
  *
- * @author Mariana
+ * @author Pedro
  */
 public class ContratoCommand implements Command{
+
+    UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
+
+    ServicoDAO servicoDAO = lookupServicoDAOBean();
+
+    PagamentoDAO pagamentoDAO = lookupPagamentoDAOBean();
 
     OrcamentoDAO orcamentoDAO = lookupOrcamentoDAOBean();
 
     ContratoDAO contratoDAO = lookupContratoDAOBean();
+
+    AvaliacaoDAO avaliacaoDAO = lookupAvaliacaoDAOBean();
+    
+
+   
+    
     
     
     private String responsePage = "Contrato.jsp";
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private String nome;
-    private String sexo;
-    private String estado_civil;
-    private String nacionalidade;
-    private String profissao;
-    private String endereco;
-    private String cpf;
-    private String cnpj;
-    private Date dataIni;
-    private Date dataFin;
-    private String descricao;
-    private String tempoExecucao;
-    private Double valor;
+    private String username;
+    private String password;
+    private Long id;
+
     
     
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
+    
     }
 
     @Override
@@ -65,57 +64,101 @@ public class ContratoCommand implements Command{
          String action = request.getParameter("command").split("\\.")[1];
          switch(action){
              case "gerar":
+                 // Criando dados fictícios
+                 Orcamento o = new Orcamento();
+                 Servico s = new Servico();
                  Contrato c = new Contrato ();
-                 
+                 Usuario u2 = new Usuario();
+                
                  //Cliente        
-                 Usuario u1 = (Usuario) request.getSession().getAttribute("user");
-                        Cliente cli = u1.getCliente();
-                        nome = u1.getNome();
-                        sexo = "";
-                        estado_civil = "";
-                        nacionalidade = "";
-                        profissao = "";
-                        endereco = "";                       
-                        PessoaFisica pf = cli.getPessoaFisica();
-                        cpf=pf.getCpf();
-                 
-                 //Fornecedor
-                 Usuario u2 = (Usuario) request.getSession().getAttribute("fornecedor");       
-                        Fornecedor f = u2.getFornecedor();
-                         nome = u2.getNome();
-                         sexo = "";
-                         estado_civil = "";
-                         nacionalidade = "";
-                         profissao = "";
-                         endereco = "";  
-                       
-                       PessoaJuridica pj = cli.getPessoaJuridica();
-                       cnpj=pj.getCnpj();
-                 
+                        u2.setNome("nome");
+                        u2.setSenha("sexo");
+                        u2.setTipo("1");
+                        u2.setTelefone("412410421");
+                        
+                        if (u2.getTipo() == "1") {
+                        u2.setCpf("123.456.789-12");
+                        usuarioDAO.create(u2);
+                        } else{
+                            u2.setCnpj("123.456.789-12");
+                        
+                        usuarioDAO.create(u2);
+                        }
+/*                        
                  //Servico
-                   Servico s = (Servico) request.getSession().getAttribute("servico");
-                           dataIni = s.getDatainicial();
-                           dataFin = s.getDatafinal();
-                  
-                 //Mao De Obra
-                   MaoDeObra mdo = (MaoDeObra) request.getSession().getAttribute("servico"); 
-                            descricao = mdo.getDescricao();
-                            tempoExecucao = mdo.getTempoexecucao();
+                 long id_user = 1;
+                 Usuario u1 = new Usuario();
+                 u1.setIdUsuario(id_user);
+                 u1 = usuarioDAO.readById(u1.getIdUsuario());
+                        s.setDatainicial(null);
+                        s.setDatafinal(null);
+                        s.setFkUsuario(u1);
+                        s.setDescricao("blablabla");
+                        s.setStatus(Boolean.TRUE);
+                        s.setValor(1000.00);
+                 long id_avaliacao = 1;
+                 Avaliacao av = new Avaliacao();
+                 av.setIdAvaliacao(id_avaliacao);
+                 av = avaliacaoDAO.readById(av.getIdAvaliacao());
                             
+                        
+                        long id_orcamento = 1;
+                 Orcamento o1 = new Orcamento();
+                 o1.setIdOrcamento(id_orcamento);
+                 o1 = orcamentoDAO.readById(id_orcamento);
+                 o1.setServico(s);
+                 s.setOrcamento(o1);
+                 
+                       
+                        
                  //Orcamento      
-                    Orcamento o = (Orcamento)request.getSession().getAttribute("orcamento"); 
-                            valor = o.getValortot();
-                            
-                            
-                 //Settar Contrato
-                           c.setOrcamento(o);
+                 o.setValortot(1000.12);
+                 o.setStatus("em andamento");
+                           servicoDAO.create(s);
+               orcamentoDAO.create(o);
+                 
+                 
+              
+*/  
+    responsePage = "index.jsp";
+break;
+                 
+                 
+             case "login":
+                 
+                username = request.getParameter("nome");
+                password = request.getParameter("senha");
+                id = Long.parseLong(request.getParameter("id_usuario"));                
+                Usuario tempUsuario = usuarioDAO.readById(id);
+                 request.getSession().setAttribute("user", tempUsuario);
+                 
+                 break;
+             case "contrato":
+                id = Long.parseLong(request.getParameter("id_usuario"));                
+                 tempUsuario = usuarioDAO.readById(id);
+                  // Contrato
+                 
+                 
+                
+                 
                  break;
          }
+         
     }
 
     @Override
     public String getResponsePage() {
-        return responsePage;
+       return responsePage;
+     }
+
+    private AvaliacaoDAO lookupAvaliacaoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (AvaliacaoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/AvaliacaoDAO!Avaliacao.AvaliacaoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
     }
 
     private ContratoDAO lookupContratoDAOBean() {
@@ -137,6 +180,38 @@ public class ContratoCommand implements Command{
             throw new RuntimeException(ne);
         }
     }
-    
-    
+
+    private PagamentoDAO lookupPagamentoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (PagamentoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/PagamentoDAO!Pagamento.PagamentoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private ServicoDAO lookupServicoDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (ServicoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/ServicoDAO!Servico.ServicoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private UsuarioDAO lookupUsuarioDAOBean() {
+        try {
+            Context c = new InitialContext();
+            return (UsuarioDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/UsuarioDAO!Afiliacao.UsuarioDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+
+
+
 }

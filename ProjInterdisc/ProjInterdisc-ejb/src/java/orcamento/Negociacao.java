@@ -5,6 +5,7 @@
  */
 package orcamento;
 
+import orcamento.Orcamento;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 31548751
+ * @author 31520731
  */
 @Entity
 @Table(name = "NEGOCIACAO")
@@ -30,13 +31,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Negociacao.findAll", query = "SELECT n FROM Negociacao n")
     , @NamedQuery(name = "Negociacao.findByIdNegociacao", query = "SELECT n FROM Negociacao n WHERE n.idNegociacao = :idNegociacao")
-    , @NamedQuery(name = "Negociacao.findByMensagem", query = "SELECT n FROM Negociacao n WHERE n.mensagem = :mensagem")
-    , @NamedQuery(name = "Negociacao.findByStatus", query = "SELECT n FROM Negociacao n WHERE n.status = :status")})
+    , @NamedQuery(name = "Negociacao.findByStatus", query = "SELECT n FROM Negociacao n WHERE n.status = :status")
+    , @NamedQuery(name = "Negociacao.findByPedido", query = "SELECT n FROM Negociacao n WHERE n.pedido = :pedido")})
 public class Negociacao implements Serializable {
-
-    @Size(max = 144)
-    @Column(name = "PEDIDO")
-    private String pedido;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,12 +41,12 @@ public class Negociacao implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_NEGOCIACAO")
     private Long idNegociacao;
-    @Size(max = 200)
-    @Column(name = "MENSAGEM")
-    private String mensagem;
-    @Size(max = 20)
+    @Size(max = 30)
     @Column(name = "STATUS")
     private String status;
+    @Size(max = 144)
+    @Column(name = "PEDIDO")
+    private String pedido;
     @JoinColumn(name = "FK_ORCAMENTO", referencedColumnName = "ID_ORCAMENTO")
     @ManyToOne
     private Orcamento fkOrcamento;
@@ -69,20 +66,20 @@ public class Negociacao implements Serializable {
         this.idNegociacao = idNegociacao;
     }
 
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(String pedido) {
+        this.pedido = pedido;
     }
 
     public Orcamento getFkOrcamento() {
@@ -115,15 +112,7 @@ public class Negociacao implements Serializable {
 
     @Override
     public String toString() {
-        return "orcamento.Negociacao[ idNegociacao=" + idNegociacao + " ]";
-    }
-
-    public String getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(String pedido) {
-        this.pedido = pedido;
+        return "Contrato.Negociacao[ idNegociacao=" + idNegociacao + " ]";
     }
     
 }

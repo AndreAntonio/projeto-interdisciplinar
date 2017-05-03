@@ -5,8 +5,11 @@
  */
 package Contrato;
 
-import Entidades.Usuario;
+import Afiliacao.Usuario;
+import Pagamento.Pagamento;
+import orcamento.Orcamento;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,25 +17,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import orcamento.Orcamento;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Mariana
+ * @author 31520731
  */
 @Entity
 @Table(name = "CONTRATO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c"),
-    @NamedQuery(name = "Contrato.findByIdContrato", query = "SELECT c FROM Contrato c WHERE c.idContrato = :idContrato"),
-    @NamedQuery(name = "Contrato.findByTermodocontrato", query = "SELECT c FROM Contrato c WHERE c.termodocontrato = :termodocontrato")})
+    @NamedQuery(name = "Contrato.findAll", query = "SELECT c FROM Contrato c")
+    , @NamedQuery(name = "Contrato.findByIdContrato", query = "SELECT c FROM Contrato c WHERE c.idContrato = :idContrato")
+    , @NamedQuery(name = "Contrato.findByTermodocontrato", query = "SELECT c FROM Contrato c WHERE c.termodocontrato = :termodocontrato")})
 public class Contrato implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,15 +49,14 @@ public class Contrato implements Serializable {
     @Size(max = 1000)
     @Column(name = "TERMODOCONTRATO")
     private String termodocontrato;
+    @OneToMany(mappedBy = "fkContrato")
+    private List<Pagamento> pagamentoList;
     @JoinColumn(name = "ID_CONTRATO", referencedColumnName = "ID_ORCAMENTO", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Orcamento orcamento;
-    @JoinColumn(name = "ID_CONTRATO", referencedColumnName = "ID_TERMO", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private TermoDeAceite termoDeAceite;
-    @JoinColumn(name = "ID_CONTRATO", referencedColumnName = "ID_USUARIO", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Usuario usuario;
+    @JoinColumn(name = "ID_CONTRATO_CLIENTE", referencedColumnName = "ID_USUARIO")
+    @ManyToOne
+    private Usuario idContratoCliente;
 
     public Contrato() {
     }
@@ -77,6 +81,15 @@ public class Contrato implements Serializable {
         this.termodocontrato = termodocontrato;
     }
 
+    @XmlTransient
+    public List<Pagamento> getPagamentoList() {
+        return pagamentoList;
+    }
+
+    public void setPagamentoList(List<Pagamento> pagamentoList) {
+        this.pagamentoList = pagamentoList;
+    }
+
     public Orcamento getOrcamento() {
         return orcamento;
     }
@@ -85,20 +98,12 @@ public class Contrato implements Serializable {
         this.orcamento = orcamento;
     }
 
-    public TermoDeAceite getTermoDeAceite() {
-        return termoDeAceite;
+    public Usuario getIdContratoCliente() {
+        return idContratoCliente;
     }
 
-    public void setTermoDeAceite(TermoDeAceite termoDeAceite) {
-        this.termoDeAceite = termoDeAceite;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setIdContratoCliente(Usuario idContratoCliente) {
+        this.idContratoCliente = idContratoCliente;
     }
 
     @Override

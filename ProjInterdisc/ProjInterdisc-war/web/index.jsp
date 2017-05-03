@@ -14,6 +14,12 @@
     <body>
         <h1>Navegação entre modulos do sistema</h1>
         <a href="orcamento/orcamento.jsp">Orçamento</a>
+        <form method="POST" action="Controller">
+            <input type="hidden" name="command" value="Contrato.gerar"/>
+      
+                    <input type="submit" value="GERAR"/>
+            
+        </form>
         
     </body>
 </html>

@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
             String commandstr = request.getParameter("command").split("\\.")[0];
             try {
                 Command command = (Command)Class.forName(
-                        "com.br.lp3.controller.command."+commandstr+"Command")
+                        "com.br.pi.controller.command."+commandstr+"Command")
                         .newInstance();
                 command.init(request, response);
                 command.execute();

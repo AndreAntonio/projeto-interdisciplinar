@@ -6,9 +6,8 @@
 package orcamento;
 
 import Contrato.Contrato;
-import Entidades.Servico;
+import Servico.Servico;
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -31,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 31548751
+ * @author 31520731
  */
 @Entity
 @Table(name = "ORCAMENTO")
@@ -39,26 +38,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Orcamento.findAll", query = "SELECT o FROM Orcamento o")
     , @NamedQuery(name = "Orcamento.findByIdOrcamento", query = "SELECT o FROM Orcamento o WHERE o.idOrcamento = :idOrcamento")
-    , @NamedQuery(name = "Orcamento.findByFkCliente", query = "SELECT o FROM Orcamento o WHERE o.fkCliente = :fkCliente")
-    , @NamedQuery(name = "Orcamento.findByFkFornecedor", query = "SELECT o FROM Orcamento o WHERE o.fkFornecedor = :fkFornecedor")
-    , @NamedQuery(name = "Orcamento.findByTempoexec", query = "SELECT o FROM Orcamento o WHERE o.tempoexec = :tempoexec")
+    , @NamedQuery(name = "Orcamento.findByValortot", query = "SELECT o FROM Orcamento o WHERE o.valortot = :valortot")
     , @NamedQuery(name = "Orcamento.findByStatus", query = "SELECT o FROM Orcamento o WHERE o.status = :status")
-    , @NamedQuery(name = "Orcamento.findByDatValidade", query = "SELECT o FROM Orcamento o WHERE o.datValidade = :datValidade")})
+    , @NamedQuery(name = "Orcamento.findByTempotot", query = "SELECT o FROM Orcamento o WHERE o.tempotot = :tempotot")
+    , @NamedQuery(name = "Orcamento.findByValidade", query = "SELECT o FROM Orcamento o WHERE o.validade = :validade")})
 public class Orcamento implements Serializable {
-
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALORTOT")
-    private Double valortot;
-    @Size(max = 50)
-    @Column(name = "TEMPOTOT")
-    private String tempotot;
-    @Column(name = "VALIDADE")
-    @Temporal(TemporalType.DATE)
-    private Date validade;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
-    private Contrato contrato;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
-    private Servico servico;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -66,21 +50,24 @@ public class Orcamento implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID_ORCAMENTO")
     private Long idOrcamento;
-    @Column(name = "FK_CLIENTE")
-    private BigInteger fkCliente;
-    @Column(name = "FK_FORNECEDOR")
-    private BigInteger fkFornecedor;
-    @Size(max = 50)
-    @Column(name = "TEMPOEXEC")
-    private String tempoexec;
-    @Size(max = 20)
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "VALORTOT")
+    private Double valortot;
+    @Size(max = 30)
     @Column(name = "STATUS")
     private String status;
-    @Size(max = 20)
-    @Column(name = "DAT_VALIDADE")
-    private String datValidade;
+    @Size(max = 50)
+    @Column(name = "TEMPOTOT")
+    private String tempotot;
+    @Column(name = "VALIDADE")
+    @Temporal(TemporalType.DATE)
+    private Date validade;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
+    private Servico servico;
     @OneToMany(mappedBy = "fkOrcamento")
     private List<Item> itemList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
+    private Contrato contrato;
     @OneToMany(mappedBy = "fkOrcamento")
     private List<Negociacao> negociacaoList;
 
@@ -99,28 +86,12 @@ public class Orcamento implements Serializable {
         this.idOrcamento = idOrcamento;
     }
 
-    public BigInteger getFkCliente() {
-        return fkCliente;
+    public Double getValortot() {
+        return valortot;
     }
 
-    public void setFkCliente(BigInteger fkCliente) {
-        this.fkCliente = fkCliente;
-    }
-
-    public BigInteger getFkFornecedor() {
-        return fkFornecedor;
-    }
-
-    public void setFkFornecedor(BigInteger fkFornecedor) {
-        this.fkFornecedor = fkFornecedor;
-    }
-
-    public String getTempoexec() {
-        return tempoexec;
-    }
-
-    public void setTempoexec(String tempoexec) {
-        this.tempoexec = tempoexec;
+    public void setValortot(Double valortot) {
+        this.valortot = valortot;
     }
 
     public String getStatus() {
@@ -131,12 +102,28 @@ public class Orcamento implements Serializable {
         this.status = status;
     }
 
-    public String getDatValidade() {
-        return datValidade;
+    public String getTempotot() {
+        return tempotot;
     }
 
-    public void setDatValidade(String datValidade) {
-        this.datValidade = datValidade;
+    public void setTempotot(String tempotot) {
+        this.tempotot = tempotot;
+    }
+
+    public Date getValidade() {
+        return validade;
+    }
+
+    public void setValidade(Date validade) {
+        this.validade = validade;
+    }
+
+    public Servico getServico() {
+        return servico;
+    }
+
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     @XmlTransient
@@ -146,6 +133,14 @@ public class Orcamento implements Serializable {
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+    public Contrato getContrato() {
+        return contrato;
+    }
+
+    public void setContrato(Contrato contrato) {
+        this.contrato = contrato;
     }
 
     @XmlTransient
@@ -179,47 +174,7 @@ public class Orcamento implements Serializable {
 
     @Override
     public String toString() {
-        return "orcamento.Orcamento[ idOrcamento=" + idOrcamento + " ]";
-    }
-
-    public Double getValortot() {
-        return valortot;
-    }
-
-    public void setValortot(Double valortot) {
-        this.valortot = valortot;
-    }
-
-    public String getTempotot() {
-        return tempotot;
-    }
-
-    public void setTempotot(String tempotot) {
-        this.tempotot = tempotot;
-    }
-
-    public Date getValidade() {
-        return validade;
-    }
-
-    public void setValidade(Date validade) {
-        this.validade = validade;
-    }
-
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-    }
-
-    public Servico getServico() {
-        return servico;
-    }
-
-    public void setServico(Servico servico) {
-        this.servico = servico;
+        return "Contrato.Orcamento[ idOrcamento=" + idOrcamento + " ]";
     }
     
 }
