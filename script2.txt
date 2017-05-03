@@ -1,0 +1,163 @@
+--Criação de Tabelas--
+
+create table contrato(
+    id_contrato bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+    termoDoContrato varchar(1000),
+id_contrato_cliente bigint
+);
+
+create table pagamento(
+id_pagamento bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+fk_contrato bigint,
+fk_cliente bigint,
+tipo int,
+preco double
+);
+
+
+create table usuario(
+id_usuario bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+nome varchar(40),
+email varchar(60),
+senha varchar(32),
+telefone varchar (13),
+tipo varchar(20),
+cpf varchar(15) ,
+cnpj varchar(20) 
+);
+
+
+create table servico(
+id_servico bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+fk_usuario bigint,
+valor double,
+descricao varchar(120),
+status boolean,
+dataInicial date,
+dataFinal date,
+id_servico_avaliacao bigint
+);
+
+create table avaliacao(
+id_avaliacao bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+nota double,
+comentario varchar(144)
+);
+
+create table orcamento(
+id_orcamento bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+valorTot double,
+status varchar(30),
+tempoTot varchar(50),
+validade date
+);
+
+create table negociacao(
+id_negociacao bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+fk_orcamento bigint,
+status varchar(30),
+pedido varchar(144)
+);
+
+create table item(
+id_item bigint primary key 
+               generated always as identity
+               (start with 1, increment by 1),
+fk_orcamento bigint,
+valor double,
+descricao varchar(144),
+tempoExecucao varchar(100),
+tipo varchar(100),
+quantidade int not null
+);
+
+
+
+insert into avaliacao (nota, comentario) values (10, 'asdnhuisdhabu');
+
+insert into orcamento (valortot) values (11);
+-- Fim da Criação -- 
+
+-- Alter Tables -- 
+
+-- Relacionamentos 1 para 1 --
+
+alter table contrato
+add foreign key(id_contrato)
+references orcamento(id_orcamento)
+on delete cascade;
+
+alter table contrato
+add foreign key(id_contrato_cliente)
+references usuario(id_usuario)
+on delete cascade;
+
+
+
+alter table servico
+add foreign key(id_servico_avaliacao)
+references avaliacao(id_avaliacao)
+on delete cascade;
+
+alter table servico
+add foreign key(id_servico)
+references orcamento(id_orcamento)
+on delete cascade;
+
+
+-- Relacionamentos 1 para muitos --
+
+alter table pagamento
+add foreign key(fk_contrato)
+references contrato(id_contrato)
+on delete cascade;
+
+alter table pagamento
+add foreign key(fk_cliente)
+references usuario(id_usuario)
+on delete cascade;
+
+alter table servico
+add foreign key(fk_usuario)
+references usuario(id_usuario)
+on delete cascade;
+
+alter table negociacao
+add foreign key(fk_orcamento)
+references orcamento(id_orcamento)
+on delete cascade;
+
+
+alter table item
+add foreign key(fk_orcamento)
+references orcamento(id_orcamento)
+on delete cascade;
+
+
+
+drop table usuario;
+drop table cliente;
+drop table fornecedor;
+drop table servico;
+drop table avaliacao;
+drop table item;
+drop table orcamento;
+drop table negociacao;
+drop table boleto;
+drop table pagamento;
+drop table contrato;
+drop table termo_de_aceite;
