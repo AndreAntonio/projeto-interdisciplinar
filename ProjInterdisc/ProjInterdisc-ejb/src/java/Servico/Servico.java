@@ -5,9 +5,6 @@
  */
 package Servico;
 
-import Avaliacao.Avaliacao;
-import Afiliacao.Usuario;
-import orcamento.Orcamento;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -26,10 +23,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import Avaliacao.Avaliacao;
+import orcamento.Orcamento;
+import Afiliacao.Usuario;
 
 /**
  *
- * @author 31520731
+ * @author lgd25
  */
 @Entity
 @Table(name = "SERVICO")
@@ -175,7 +175,7 @@ public class Servico implements Serializable {
 
     @Override
     public String toString() {
-        return "Contrato.Servico[ idServico=" + idServico + " ]";
+        return "orcamento.Servico[ idServico=" + idServico + " ]";
     }
     
 }

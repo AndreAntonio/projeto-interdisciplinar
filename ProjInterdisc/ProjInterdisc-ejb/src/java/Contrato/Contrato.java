@@ -6,8 +6,6 @@
 package Contrato;
 
 import Afiliacao.Usuario;
-import Pagamento.Pagamento;
-import orcamento.Orcamento;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -26,10 +24,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import orcamento.Orcamento;
+import Pagamento.Pagamento;
 
 /**
  *
- * @author 31520731
+ * @author lgd25
  */
 @Entity
 @Table(name = "CONTRATO")
@@ -128,7 +128,7 @@ public class Contrato implements Serializable {
 
     @Override
     public String toString() {
-        return "Contrato.Contrato[ idContrato=" + idContrato + " ]";
+        return "orcamento.Contrato[ idContrato=" + idContrato + " ]";
     }
     
 }

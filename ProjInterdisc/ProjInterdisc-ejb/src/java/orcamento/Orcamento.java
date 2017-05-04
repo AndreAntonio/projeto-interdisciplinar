@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author 31520731
+ * @author lgd25
  */
 @Entity
 @Table(name = "ORCAMENTO")
@@ -174,7 +174,7 @@ public class Orcamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Contrato.Orcamento[ idOrcamento=" + idOrcamento + " ]";
+        return "orcamento.Orcamento[ idOrcamento=" + idOrcamento + " ]";
     }
     
 }

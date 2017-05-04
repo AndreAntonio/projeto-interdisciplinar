@@ -5,9 +5,7 @@
  */
 package Afiliacao;
 
-import Contrato.Contrato;
 import Servico.Servico;
-import Pagamento.Pagamento;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -23,10 +21,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import Contrato.Contrato;
+import Pagamento.Pagamento;
 
 /**
  *
- * @author 31520731
+ * @author lgd25
  */
 @Entity
 @Table(name = "USUARIO")
@@ -198,7 +198,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Contrato.Usuario[ idUsuario=" + idUsuario + " ]";
+        return "orcamento.Usuario[ idUsuario=" + idUsuario + " ]";
     }
     
 }

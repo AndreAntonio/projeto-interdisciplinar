@@ -5,7 +5,6 @@
  */
 package orcamento;
 
-import orcamento.Orcamento;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -24,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 31520731
+ * @author lgd25
  */
 @Entity
 @Table(name = "ITEM")
@@ -155,7 +154,7 @@ public class Item implements Serializable {
 
     @Override
     public String toString() {
-        return "Contrato.Item[ idItem=" + idItem + " ]";
+        return "orcamento.Item[ idItem=" + idItem + " ]";
     }
     
 }

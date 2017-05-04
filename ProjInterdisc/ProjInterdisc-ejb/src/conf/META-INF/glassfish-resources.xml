@@ -11,4 +11,7 @@
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:module/JNDI_Projeto" object-type="user" pool-name="derby_net_Banco_Proj_mackPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:module/Projeto_jndi" object-type="user" pool-name="derby_net_Banco_Proj_mackPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:module/jndiPI" object-type="user" pool-name="derby_net_Banco_Proj_mackPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:module/projeto_jndi" object-type="user" pool-name="derby_net_Banco_Proj_mackPool"/>
 </resources>

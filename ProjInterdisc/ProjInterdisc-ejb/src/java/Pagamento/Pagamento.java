@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 31520731
+ * @author lgd25
  */
 @Entity
 @Table(name = "PAGAMENTO")
@@ -122,7 +122,7 @@ public class Pagamento implements Serializable {
 
     @Override
     public String toString() {
-        return "Contrato.Pagamento[ idPagamento=" + idPagamento + " ]";
+        return "orcamento.Pagamento[ idPagamento=" + idPagamento + " ]";
     }
     
 }
