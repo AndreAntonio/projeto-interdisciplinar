@@ -21,21 +21,31 @@ import javax.servlet.http.HttpServletResponse;
 public class PagamentoCommand implements Command{
 
     ContratoDAO contratoDAO = lookupContratoDAOBean();
-
+    
+    private String responsePage = "pagamento.jsp";
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    
     @Override
     public void init(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.request = request;
+        this.response = response;
+    
     }
 
     @Override
-    public void execute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     public void execute() {
+         String action = request.getParameter("command").split("\\.")[1];
+         switch(action){
+             
+         }
+         
     }
 
-    @Override
-    public String getResponsePage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+     @Override
+     public String getResponsePage() {
+         return this.responsePage;
+     }
 
     private ContratoDAO lookupContratoDAOBean() {
         try {
@@ -48,3 +58,4 @@ public class PagamentoCommand implements Command{
     }
     
 }
+
