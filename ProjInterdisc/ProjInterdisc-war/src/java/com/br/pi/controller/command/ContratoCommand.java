@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 package com.br.pi.controller.command;
-import com.br.pi.model.DAO.AvaliacaoDAO;
-import com.br.pi.model.entities.afiliacao.Usuario;
-import com.br.pi.model.entities.avaliacao.Servico;
-import com.br.pi.model.entities.contrato.Contrato;
-import com.br.pi.model.DAO.ContratoDAO;
-import com.br.pi.model.DAO.OrcamentoDAO;
-import com.br.pi.model.DAO.PagamentoDAO;
-import com.br.pi.model.DAO.ServicoDAO;
-import com.br.pi.model.DAO.UsuarioDAO;
-import com.br.pi.model.entities.avaliacao.Avaliacao;
 
-import com.br.pi.model.entities.orcamento.Orcamento;
+import Afiliacao.Usuario;
+import Afiliacao.UsuarioDAO;
+import Avaliacao.AvaliacaoDAO;
+import Contrato.Contrato;
+import Contrato.ContratoDAO;
+import Pagamento.PagamentoDAO;
+import Servico.Servico;
+import Servico.ServicoDAO;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,6 +22,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import orcamento.Orcamento;
+import orcamento.OrcamentoDAO;
 
 /**
  *

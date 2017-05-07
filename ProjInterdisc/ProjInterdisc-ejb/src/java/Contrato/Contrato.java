@@ -130,5 +130,20 @@ public class Contrato implements Serializable {
     public String toString() {
         return "orcamento.Contrato[ idContrato=" + idContrato + " ]";
     }
+
+    public Object getIdContratoUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdContratoUsuario(Usuario tempUsuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdContratoOrcamento(Orcamento orcamentoAux1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     
 }

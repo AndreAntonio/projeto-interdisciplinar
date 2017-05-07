@@ -1,6 +1,6 @@
 <%-- 
-    Document   : orcamento
-    Created on : 07/05/2017, 14:20:33
+    Document   : orcamentoFinish
+    Created on : 07/05/2017, 14:20:49
     Author     : lgd25
 --%>
 
@@ -18,18 +18,14 @@
     <c:import url="menu.jsp"></c:import>
     <div id="main">
         <div id="conteudo">
-            <h1 class="title">Dados iniciais do orçamento</h1>
-            
-            <div>
-                <p>Nome do fornecedor de serviços: ${user.nome}</p><br>
-                <p>Nome do cliente que solicitou orçamento: ${clienteSelect.nome}</p><br>
-                <p>Tipo de serviço solicitado: ${servicoSolicitado}</p><br>
-            </div>
-            
+            <h1 class="title">Itens do orçamento</h1>
             <form class="formulario" action="Controller" method="POST">
                 
-                <input type="hidden" name="command" value="Orcamento.start"/>
-                <p><input type="submit" value="PRÓXIMO"/></p>
+                <p>Descrição<br> <input type="text" name="desc_item" required="" /></p><br>
+                <p>Valor <br><input type="number" step="0.01" placeholder="R$ 0,00"/></p><br>
+                <p>Quantidade <br><input type="number"></p><br>
+                <input type="hidden" name="command" value="Orcamento.addItem"/>
+                <p><input type="submit" value="Adicionar Item"/></p>
                 
             </form>
         </div>
