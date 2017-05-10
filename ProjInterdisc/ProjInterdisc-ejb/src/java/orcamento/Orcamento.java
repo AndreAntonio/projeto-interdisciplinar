@@ -8,6 +8,7 @@ package orcamento;
 import Contrato.Contrato;
 import Servico.Servico;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -68,6 +69,7 @@ public class Orcamento implements Serializable {
     private Servico fkServico;
 
     public Orcamento() {
+        itemList = new ArrayList();
     }
 
     public Orcamento(Long idOrcamento) {
@@ -112,6 +114,31 @@ public class Orcamento implements Serializable {
 
     public void setServico(Servico servico) {
         this.servico = servico;
+    }
+    
+    
+    public void calculaValorTot(){
+        double valortotal=0;
+        for (Item item : itemList) {
+            valortotal = valortotal +(item.getValor()*item.getQuantidade());
+        }
+        this.valortot = valortotal;
+    }
+    
+    public void addItem(Item i){
+        itemList.add(i);
+    }
+    
+    public void removeItem(Item i){
+        String descricao = i.getDescricao();
+        double valor = i.getValor();
+        int quant = i.getQuantidade();
+        
+        for (Item item : itemList) {
+            if(item.getDescricao().equals(descricao)&&item.getValor()==valor&&quant==item.getQuantidade()){
+                itemList.remove(item);
+            }
+        }
     }
 
     @XmlTransient

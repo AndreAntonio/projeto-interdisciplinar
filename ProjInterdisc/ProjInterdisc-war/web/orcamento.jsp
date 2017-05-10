@@ -28,7 +28,7 @@
             
             <form class="formulario" action="Controller" method="POST">
                 
-                <input type="hidden" name="command" value="Orcamento.start"/>
+                <input type="hidden" name="command" value="Orcamento.startOrcamento"/>
                 <p><input type="submit" value="PRÓXIMO"/></p>
                 
             </form>

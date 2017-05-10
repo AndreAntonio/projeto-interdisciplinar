@@ -22,17 +22,31 @@
             <form class="formulario" action="Controller" method="POST">
                 
                 <p>Descrição<br> <input type="text" name="desc_item" required="" /></p><br>
-                <p>Valor <br><input type="number" step="0.01" placeholder="R$ 0,00"/></p><br>
-                <p>Quantidade <br><input type="number"></p><br>
+                <p>Valor <br><input type="number" step="0.01" placeholder="R$ 0,00" name="valor"/></p><br>
+                <p>Quantidade <br><input type="number" name="quant"></p><br>
                 <input type="hidden" name="command" value="Orcamento.addItem"/>
                 <p><input type="submit" value="Adicionar Item"/></p>
                 
-            </form>
+            </form><br><br>
             <table>
                 <tr>
                     <td>Descrição do item</td>
                     <td>Valor unitário</td>
                     <td>Quantidade</td>
+                </tr>
+                
+            <c:forEach items="${orcamento.getItemList()}" var="item">
+                <tr>
+                    <td>${item.getDescricao()}</td>
+                    <td>${item.getValor()}</td>
+                    <td>${item.getQuantidade()}</td>
+                </tr>
+                
+            </c:forEach>
+                <tr style="background-color: grey">
+                    <td></td>
+                    <td>Valor Total:</td>
+                    <td>${orcamento.getValortot()}</td>
                 </tr>
             </table>
         </div>

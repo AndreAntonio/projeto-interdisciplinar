@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import orcamento.Item;
 import orcamento.Orcamento;
 import orcamento.OrcamentoDAO;
 
@@ -24,7 +25,9 @@ public class OrcamentoCommand implements Command {
 
     OrcamentoDAO orcamentoDAO = lookupOrcamentoDAOBean();
 
-    private String responsePage = "orcamento/orcamento.jsp";
+   
+
+    private String responsePage = "orcamento.jsp";
     private HttpServletRequest request;
     private HttpServletResponse response;
     
@@ -60,6 +63,10 @@ public class OrcamentoCommand implements Command {
                 request.getSession().setAttribute("user", fornecedor);
                 request.getSession().setAttribute("clienteSelect", cliente);
                 request.getSession().setAttribute("servicoSolicitado", "Reparo de pia");
+                
+                
+                
+                        
                     
                 
                 break;
@@ -74,16 +81,28 @@ public class OrcamentoCommand implements Command {
                 break;
             
             case "addItem":
+                    String desc_item = request.getParameter("desc_item");
+                    double valor = Double.parseDouble(request.getParameter("valor"));
+                    int quant = Integer.parseInt(request.getParameter("quant"));
+                    Item i = new Item();
+                    i.setDescricao(desc_item);
+                    i.setQuantidade(quant);
+                    i.setValor(valor);
+                    Orcamento o1 = (Orcamento)request.getSession().getAttribute("orcamento");
+                    o1.addItem(i);
+                    o1.calculaValorTot();
+                    request.getSession().setAttribute("orcamento", o1);
+                    responsePage = "orcamentoItens.jsp";
                     
-                
-                
                 
                 break;
                 
                 
             case "startOrcamento":
                 
-                
+                Orcamento o = new Orcamento();
+                request.getSession().setAttribute("orcamento", o);
+                responsePage ="orcamentoItens.jsp";
                 
                 
                 break;
@@ -105,5 +124,7 @@ public class OrcamentoCommand implements Command {
             throw new RuntimeException(ne);
         }
     }
+
+    
 
 }
