@@ -82,9 +82,8 @@ public class OrcamentoCommand implements Command {
                 
                 
             case "startOrcamento":
-                Orcamento o = new Orcamento();
-                o.setStatus("em andamento");
-                o.set
+                
+                
                 
                 
                 break;

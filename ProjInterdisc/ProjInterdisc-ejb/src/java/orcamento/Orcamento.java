@@ -8,7 +8,6 @@ package orcamento;
 import Contrato.Contrato;
 import Servico.Servico;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -17,13 +16,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -40,8 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Orcamento.findByIdOrcamento", query = "SELECT o FROM Orcamento o WHERE o.idOrcamento = :idOrcamento")
     , @NamedQuery(name = "Orcamento.findByValortot", query = "SELECT o FROM Orcamento o WHERE o.valortot = :valortot")
     , @NamedQuery(name = "Orcamento.findByStatus", query = "SELECT o FROM Orcamento o WHERE o.status = :status")
-    , @NamedQuery(name = "Orcamento.findByTempotot", query = "SELECT o FROM Orcamento o WHERE o.tempotot = :tempotot")
-    , @NamedQuery(name = "Orcamento.findByValidade", query = "SELECT o FROM Orcamento o WHERE o.validade = :validade")})
+    , @NamedQuery(name = "Orcamento.findByTempoexecucao", query = "SELECT o FROM Orcamento o WHERE o.tempoexecucao = :tempoexecucao")})
 public class Orcamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -56,20 +54,18 @@ public class Orcamento implements Serializable {
     @Size(max = 30)
     @Column(name = "STATUS")
     private String status;
-    @Size(max = 50)
-    @Column(name = "TEMPOTOT")
-    private String tempotot;
-    @Column(name = "VALIDADE")
-    @Temporal(TemporalType.DATE)
-    private Date validade;
+    @Size(max = 30)
+    @Column(name = "TEMPOEXECUCAO")
+    private String tempoexecucao;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
     private Servico servico;
     @OneToMany(mappedBy = "fkOrcamento")
     private List<Item> itemList;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
     private Contrato contrato;
-    @OneToMany(mappedBy = "fkOrcamento")
-    private List<Negociacao> negociacaoList;
+    @JoinColumn(name = "FK_SERVICO", referencedColumnName = "ID_SERVICO")
+    @ManyToOne
+    private Servico fkServico;
 
     public Orcamento() {
     }
@@ -102,20 +98,12 @@ public class Orcamento implements Serializable {
         this.status = status;
     }
 
-    public String getTempotot() {
-        return tempotot;
+    public String getTempoexecucao() {
+        return tempoexecucao;
     }
 
-    public void setTempotot(String tempotot) {
-        this.tempotot = tempotot;
-    }
-
-    public Date getValidade() {
-        return validade;
-    }
-
-    public void setValidade(Date validade) {
-        this.validade = validade;
+    public void setTempoexecucao(String tempoexecucao) {
+        this.tempoexecucao = tempoexecucao;
     }
 
     public Servico getServico() {
@@ -143,13 +131,12 @@ public class Orcamento implements Serializable {
         this.contrato = contrato;
     }
 
-    @XmlTransient
-    public List<Negociacao> getNegociacaoList() {
-        return negociacaoList;
+    public Servico getFkServico() {
+        return fkServico;
     }
 
-    public void setNegociacaoList(List<Negociacao> negociacaoList) {
-        this.negociacaoList = negociacaoList;
+    public void setFkServico(Servico fkServico) {
+        this.fkServico = fkServico;
     }
 
     @Override

@@ -5,7 +5,6 @@
  */
 package Afiliacao;
 
-import Servico.Servico;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -23,6 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import Contrato.Contrato;
 import Pagamento.Pagamento;
+import Servico.Servico;
 
 /**
  *

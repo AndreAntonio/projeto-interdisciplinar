@@ -1,7 +1,7 @@
-Wed May 03 20:36:06 BRT 2017 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Wed May 10 12:11:12 BRT 2017 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Wed May 03 20:36:07 BRT 2017:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-015b-d0ab-b9cc-ffffc0f8a2df
+Wed May 10 12:11:12 BRT 2017:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-015b-f2e9-fa84-ffffc0f8a2df
 no diretório de banco de dados C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db\Banco_Proj 
 
 java.vendor=Oracle Corporation
@@ -12,9 +12,3 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\lgd25\Documents\NetBeansProjects\projeto-interdisciplinar\ProjInterdisc\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-----------------------------------------------------------------
-Wed May 03 20:41:27 BRT 2017: Shutting down Derby engine
-----------------------------------------------------------------
-Wed May 03 20:41:27 BRT 2017:
-Encerrando a instância a816c00e-015b-d0ab-b9cc-ffffc0f8a2df
-----------------------------------------------------------------

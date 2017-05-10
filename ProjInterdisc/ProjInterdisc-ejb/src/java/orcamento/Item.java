@@ -33,8 +33,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Item.findByIdItem", query = "SELECT i FROM Item i WHERE i.idItem = :idItem")
     , @NamedQuery(name = "Item.findByValor", query = "SELECT i FROM Item i WHERE i.valor = :valor")
     , @NamedQuery(name = "Item.findByDescricao", query = "SELECT i FROM Item i WHERE i.descricao = :descricao")
-    , @NamedQuery(name = "Item.findByTempoexecucao", query = "SELECT i FROM Item i WHERE i.tempoexecucao = :tempoexecucao")
-    , @NamedQuery(name = "Item.findByTipo", query = "SELECT i FROM Item i WHERE i.tipo = :tipo")
     , @NamedQuery(name = "Item.findByQuantidade", query = "SELECT i FROM Item i WHERE i.quantidade = :quantidade")})
 public class Item implements Serializable {
 
@@ -50,12 +48,6 @@ public class Item implements Serializable {
     @Size(max = 144)
     @Column(name = "DESCRICAO")
     private String descricao;
-    @Size(max = 100)
-    @Column(name = "TEMPOEXECUCAO")
-    private String tempoexecucao;
-    @Size(max = 100)
-    @Column(name = "TIPO")
-    private String tipo;
     @Basic(optional = false)
     @NotNull
     @Column(name = "QUANTIDADE")
@@ -98,22 +90,6 @@ public class Item implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getTempoexecucao() {
-        return tempoexecucao;
-    }
-
-    public void setTempoexecucao(String tempoexecucao) {
-        this.tempoexecucao = tempoexecucao;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public int getQuantidade() {
