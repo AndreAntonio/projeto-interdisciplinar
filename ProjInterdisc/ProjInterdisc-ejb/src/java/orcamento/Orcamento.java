@@ -57,7 +57,7 @@ public class Orcamento implements Serializable {
     private String status;
     @Size(max = 30)
     @Column(name = "TEMPOEXECUCAO")
-    private String tempoexecucao;
+    private String tempoexecucao; 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "orcamento")
     private Servico servico;
     @OneToMany(mappedBy = "fkOrcamento")
@@ -133,12 +133,14 @@ public class Orcamento implements Serializable {
         String descricao = i.getDescricao();
         double valor = i.getValor();
         int quant = i.getQuantidade();
+        Item i2 = new Item();
         
         for (Item item : itemList) {
-            if(item.getDescricao().equals(descricao)&&item.getValor()==valor&&quant==item.getQuantidade()){
-                itemList.remove(item);
+            if( item.getDescricao().equals(descricao) && item.getValor()== valor && quant == item.getQuantidade() ){
+                i2 = item;
             }
         }
+        itemList.remove(i2);
     }
 
     @XmlTransient

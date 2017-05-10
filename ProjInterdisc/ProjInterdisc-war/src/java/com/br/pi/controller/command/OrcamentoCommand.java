@@ -106,6 +106,23 @@ public class OrcamentoCommand implements Command {
                 
                 
                 break;
+                
+            case "removeItem":
+                int quantidadeToRemove = Integer.parseInt(request.getParameter("itemToRemoveQuant"));
+                String descToRemove = request.getParameter("itemToRemoveDesc");
+                double valorToRemove = Double.parseDouble(request.getParameter("itemToRemoveValor"));
+                Item i1 = new Item();
+                i1.setDescricao(descToRemove);
+                i1.setQuantidade(quantidadeToRemove);
+                i1.setValor(valorToRemove);                
+                Orcamento o2 = (Orcamento)request.getSession().getAttribute("orcamento");
+                o2.removeItem(i1);
+                o2.calculaValorTot();
+                request.getSession().setAttribute("orcamento", o2);
+                responsePage ="orcamentoItens.jsp";
+                
+                
+                break;
             
         }
     }
