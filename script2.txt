@@ -1,4 +1,4 @@
---Criação de Tabelas--
+--CriaÃ§Ã£o de Tabelas--
 
 create table contrato(
     id_contrato bigint primary key 
@@ -54,24 +54,17 @@ nota double,
 comentario varchar(144)
 );
 
+
 create table orcamento(
 id_orcamento bigint primary key 
                generated always as identity
                (start with 1, increment by 1),
 valorTot double,
+fk_servico bigint,
 status varchar(30),
-tempoTot varchar(50),
-validade date
+tempoExec varchar(15)
 );
 
-create table negociacao(
-id_negociacao bigint primary key 
-               generated always as identity
-               (start with 1, increment by 1),
-fk_orcamento bigint,
-status varchar(30),
-pedido varchar(144)
-);
 
 create table item(
 id_item bigint primary key 
@@ -80,17 +73,14 @@ id_item bigint primary key
 fk_orcamento bigint,
 valor double,
 descricao varchar(144),
-tempoExecucao varchar(100),
-tipo varchar(100),
 quantidade int not null
 );
-
 
 
 insert into avaliacao (nota, comentario) values (10, 'asdnhuisdhabu');
 
 insert into orcamento (valortot) values (11);
--- Fim da Criação -- 
+-- Fim da CriaÃ§Ã£o -- 
 
 -- Alter Tables -- 
 
@@ -119,6 +109,7 @@ references orcamento(id_orcamento)
 on delete cascade;
 
 
+
 -- Relacionamentos 1 para muitos --
 
 alter table pagamento
@@ -136,10 +127,10 @@ add foreign key(fk_usuario)
 references usuario(id_usuario)
 on delete cascade;
 
-alter table negociacao
-add foreign key(fk_orcamento)
-references orcamento(id_orcamento)
-on delete cascade;
+
+alter table orcamento 
+add foreign key (fk_servico) 
+references servico(id_servico);
 
 
 alter table item
