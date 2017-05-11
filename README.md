@@ -5,6 +5,9 @@
 ## Senha do Banco de Dados :
 *mack*
 
+## Link para glassfish especifico do projeto : 
+https://drive.google.com/file/d/0B2BTB6DJcoxtTmY2UEZLS3lXczA/view?usp=sharing
+
 ## Lista de Grupos e Módulos
 
 * Módulo 1 : Serviço, Gestão de Serviço e Avaliação
