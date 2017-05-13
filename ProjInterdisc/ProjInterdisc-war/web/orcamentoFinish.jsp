@@ -20,15 +20,41 @@
         <div id="conteudo">
             <h1 class="title">Resumo do orçamento</h1>
             
-            <form class="formulario" action="Controller" method="POST">
-                
-                <p>Descrição<br> <input type="text" name="desc_item" required="" /></p><br>
-                <p>Valor <br><input type="number" step="0.01" placeholder="R$ 0,00"/></p><br>
-                <p>Quantidade <br><input type="number"></p><br>
-                <input type="hidden" name="command" value="Orcamento.addItem"/>
-                <p><input type="submit" value="Adicionar Item"/></p>
-                
+            <p>Nome do fornecedor de serviços: ${user.nome}</p><br>
+            <p>Nome do cliente que solicitou orçamento: ${clienteSelect.nome}</p><br>
+            <p>Tipo de serviço solicitado: ${servicoSolicitado}</p><br>
+            
+            <form action="Controller" method="POST">
+                Tempo de execução: <input type="text" name="tempoExec" required/>
+                <input type="hidden" name="command" value="Orcamento.setTempoExec"/>
+                <input type="submit" value="OK"/>
             </form>
+            
+            
+             <table>
+            <c:if test="${orcamento.getItemList().isEmpty()== false}">
+                <tr style="background-color: #607D8B">
+                    <td>Descrição do item</td>
+                    <td>Valor unitário</td>
+                    <td>Quantidade</td>                    
+                </tr>
+              
+                <c:forEach items="${orcamento.getItemList()}" var="item">
+                    <tr>
+                        <td>${item.getDescricao()}</td>
+                        <td>${item.getValor()}</td>
+                        <td>${item.getQuantidade()}</td>                       
+                    </tr>
+                
+                </c:forEach>
+                    <tr style="background-color: #607D8B">
+                        <td></td>                        
+                        <td>Valor Total:</td>
+                        <td>${orcamento.getValortot()}</td>
+                    </tr>
+            </c:if>  
+            </table>
+            
         </div>
     </div>
     </body>

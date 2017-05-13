@@ -123,7 +123,20 @@ public class OrcamentoCommand implements Command {
                 
                 
                 break;
+                
+                
+            case "confirmaItem":
+                responsePage = "orcamentoFinish.jsp";
+                
+                break;
+                
+           
             
+            case "setTempoExec":
+                
+                break;
+                
+                
         }
     }
 
