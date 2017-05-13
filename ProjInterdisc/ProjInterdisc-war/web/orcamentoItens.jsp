@@ -56,6 +56,12 @@
             </c:if>  
             </table>
         </div>
+        <div>
+            <form method="POST" action="Controller">
+                <input type="submit" name="AVANÇAR"/>
+                <input type="hidden" name="command" value="Orcamento.confirmaItem"/>
+            </form>
+        </div>
     </div>
     </body>
 </html>

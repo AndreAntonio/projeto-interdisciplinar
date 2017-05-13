@@ -20,7 +20,7 @@ import javax.persistence.Query;
 
 @Stateful
 @LocalBean
-public class OrcamentoDAO implements GenericDAO<Orcamento> {
+public class OrcamentoDAO implements GenericDAO<Orcamento>, IntegracaoOrcamento {
 
     @PersistenceContext(unitName="ProjInterdisc-ejbPU", type = PersistenceContextType.EXTENDED)
     private EntityManager em;
@@ -50,6 +50,19 @@ public class OrcamentoDAO implements GenericDAO<Orcamento> {
     public void delete(Orcamento e) {
         em.merge(e);
         em.remove(e);
+    }
+
+    @Override
+    public Orcamento getOrcamento(long id_servico) {
+          Orcamento o = null;
+          Query query1 = em.createNamedQuery("Orcamento.findAll",Orcamento.class);
+          List<Orcamento> orcamentos= (List<Orcamento>)query1.getResultList();
+          for (Orcamento orcamento : orcamentos) {
+            if(orcamento.getFkServico().getIdServico() == id_servico){
+                o = orcamento;
+            }
+        }
+          return o;
     }
     
 }

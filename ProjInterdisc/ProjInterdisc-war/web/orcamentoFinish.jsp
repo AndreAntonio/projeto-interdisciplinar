@@ -18,7 +18,8 @@
     <c:import url="menu.jsp"></c:import>
     <div id="main">
         <div id="conteudo">
-            <h1 class="title">Itens do orçamento</h1>
+            <h1 class="title">Resumo do orçamento</h1>
+            
             <form class="formulario" action="Controller" method="POST">
                 
                 <p>Descrição<br> <input type="text" name="desc_item" required="" /></p><br>

@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Orcamento.findByValortot", query = "SELECT o FROM Orcamento o WHERE o.valortot = :valortot")
     , @NamedQuery(name = "Orcamento.findByStatus", query = "SELECT o FROM Orcamento o WHERE o.status = :status")
     , @NamedQuery(name = "Orcamento.findByTempoexecucao", query = "SELECT o FROM Orcamento o WHERE o.tempoexecucao = :tempoexecucao")})
-public class Orcamento implements Serializable {
+public class Orcamento implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -115,6 +115,7 @@ public class Orcamento implements Serializable {
     public void setServico(Servico servico) {
         this.servico = servico;
     }
+    
     
     
     public void calculaValorTot(){
@@ -192,5 +193,7 @@ public class Orcamento implements Serializable {
     public String toString() {
         return "orcamento.Orcamento[ idOrcamento=" + idOrcamento + " ]";
     }
+
+    
     
 }
