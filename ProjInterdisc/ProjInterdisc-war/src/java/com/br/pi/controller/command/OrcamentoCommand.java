@@ -126,13 +126,22 @@ public class OrcamentoCommand implements Command {
                 
                 
             case "confirmaItem":
-                responsePage = "orcamentoFinish.jsp";
+                responsePage = "orcamentoTempoExec.jsp";
                 
                 break;
                 
            
             
             case "setTempoExec":
+                
+                Orcamento o3 = (Orcamento)request.getSession().getAttribute("orcamento");
+                o3.setTempoexecucao(request.getParameter("tempoExec"));
+                request.getSession().setAttribute("orcamento", o3);
+                responsePage = "orcamentoFinish.jsp";
+                break;
+                
+            case "confirmaOrcamento":
+                
                 
                 break;
                 

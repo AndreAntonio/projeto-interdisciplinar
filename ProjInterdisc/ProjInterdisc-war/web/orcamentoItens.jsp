@@ -17,8 +17,9 @@
     <body>
         
     <c:import url="menu.jsp"></c:import>
+    
     <div id="main">
-        <div id="conteudo">
+        <div id="conteudo" >        
             <h1 class="title">Itens do orçamento</h1>
             <form class="formulario" action="Controller" method="POST">
                 
@@ -55,13 +56,15 @@
                     </tr>
             </c:if>  
             </table>
-        </div>
-        <div>
-            <form method="POST" action="Controller">
-                <input type="submit" name="AVANÇAR"/>
+            
+            <form method="POST" action="Controller" style="float:right;">
+                <input type="submit" value="PRÓXIMO"/>
                 <input type="hidden" name="command" value="Orcamento.confirmaItem"/>
             </form>
         </div>
+        
+           
+        
     </div>
     </body>
 </html>

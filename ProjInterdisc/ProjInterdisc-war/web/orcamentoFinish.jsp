@@ -23,12 +23,8 @@
             <p>Nome do fornecedor de serviços: ${user.nome}</p><br>
             <p>Nome do cliente que solicitou orçamento: ${clienteSelect.nome}</p><br>
             <p>Tipo de serviço solicitado: ${servicoSolicitado}</p><br>
+            <p>Tempo de execução: ${orcamento.tempoexecucao}</p>
             
-            <form action="Controller" method="POST">
-                Tempo de execução: <input type="text" name="tempoExec" required/>
-                <input type="hidden" name="command" value="Orcamento.setTempoExec"/>
-                <input type="submit" value="OK"/>
-            </form>
             
             
              <table>
@@ -53,8 +49,12 @@
                         <td>${orcamento.getValortot()}</td>
                     </tr>
             </c:if>  
-            </table>
-            
+             </table><br><br>
+             
+            <form method="POST" action="Controller" style="float:right;">
+                <input type="submit" value="Confirmar Orcamento"/>
+                <input type="hidden" name="command" value="Orcamento.confirmaOrcamento"/>
+            </form>
         </div>
     </div>
     </body>
