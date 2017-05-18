@@ -5,9 +5,12 @@
  */
 package Contrato;
 
+import Nota_Fiscal.Notafiscal;
 import Pagamento.Pagamento;
 import Afiliacao.Usuario;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -40,6 +43,9 @@ import orcamento.Orcamento;
     , @NamedQuery(name = "Contrato.findByTermodocontrato", query = "SELECT c FROM Contrato c WHERE c.termodocontrato = :termodocontrato")})
 public class Contrato implements Serializable {
 
+    @OneToMany(mappedBy = "fkContrato")
+    private Collection<Notafiscal> notafiscalCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,6 +65,7 @@ public class Contrato implements Serializable {
     private Usuario idContratoCliente;
 
     public Contrato() {
+        pagamentoList = new ArrayList<Pagamento>();
     }
 
     public Contrato(Long idContrato) {
@@ -86,6 +93,10 @@ public class Contrato implements Serializable {
         return pagamentoList;
     }
 
+    public void addPagamento(Pagamento e){
+        pagamentoList.add(e);
+    }
+    
     public void setPagamentoList(List<Pagamento> pagamentoList) {
         this.pagamentoList = pagamentoList;
     }
@@ -141,6 +152,15 @@ public class Contrato implements Serializable {
 
     public void setIdContratoOrcamento(Orcamento orcamentoAux1) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @XmlTransient
+    public Collection<Notafiscal> getNotafiscalCollection() {
+        return notafiscalCollection;
+    }
+
+    public void setNotafiscalCollection(Collection<Notafiscal> notafiscalCollection) {
+        this.notafiscalCollection = notafiscalCollection;
     }
     
 }

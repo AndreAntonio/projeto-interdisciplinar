@@ -12,14 +12,16 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Navegação entre modulos do sistema</h1>
+        <h1>Nota Fiscal</h1>
         
-        <a href="Controller?command=Orcamento.start">Orçamento</a>
+      <%-- <a href="Controller?command=NotaFiscal.start">Nota Fiscal</a> --%>
+      
+        <p>Nota Fiscal</p>
         
         <form method="POST" action="Controller">
-            <input type="hidden" name="command" value="Contrato.gerar"/>
+            <input type="hidden" name="command" value="NotaFiscal.test"/>
       
-                    <input type="submit" value="GERAR"/>
+                    <input type="submit" value="Gerar Nota"/>
             
         </form>
         

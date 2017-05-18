@@ -30,6 +30,10 @@ import orcamento.OrcamentoDAO;
  * @author Pedro
  */
 public class ContratoCommand implements Command{
+
+    UsuarioDAO usuarioDAO1 = lookupUsuarioDAOBean();
+
+    ContratoDAO contratoDAO1 = lookupContratoDAOBean1();
     UsuarioDAO usuarioDAO = lookupUsuarioDAOBean();
     ServicoDAO servicoDAO = lookupServicoDAOBean();
     PagamentoDAO pagamentoDAO = lookupPagamentoDAOBean();
@@ -219,7 +223,7 @@ public class ContratoCommand implements Command{
     private AvaliacaoDAO lookupAvaliacaoDAOBean() {
         try {
             Context c = new InitialContext();
-            return (AvaliacaoDAO) c.lookup("java:global/Interdisciplinar/Interdisciplinar-ejb/AvaliacaoDAO!com.br.pi.model.DAO.AvaliacaoDAO");
+            return (AvaliacaoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/AvaliacaoDAO!com.br.pi.model.DAO.AvaliacaoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
@@ -229,7 +233,7 @@ public class ContratoCommand implements Command{
     private ContratoDAO lookupContratoDAOBean() {
         try {
             Context c = new InitialContext();
-            return (ContratoDAO) c.lookup("java:global/Interdisciplinar/Interdisciplinar-ejb/ContratoDAO!com.br.pi.model.DAO.ContratoDAO");
+            return (ContratoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/ContratoDAO!com.br.pi.model.DAO.ContratoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
@@ -239,7 +243,7 @@ public class ContratoCommand implements Command{
     private OrcamentoDAO lookupOrcamentoDAOBean() {
         try {
             Context c = new InitialContext();
-            return (OrcamentoDAO) c.lookup("java:global/Interdisciplinar/Interdisciplinar-ejb/OrcamentoDAO!com.br.pi.model.DAO.OrcamentoDAO");
+            return (OrcamentoDAO) c.lookup("jjava:global/ProjInterdisc/ProjInterdisc-ejb/OrcamentoDAO!com.br.pi.model.DAO.OrcamentoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
@@ -249,7 +253,7 @@ public class ContratoCommand implements Command{
     private PagamentoDAO lookupPagamentoDAOBean() {
         try {
             Context c = new InitialContext();
-            return (PagamentoDAO) c.lookup("java:global/Interdisciplinar/Interdisciplinar-ejb/PagamentoDAO!com.br.pi.model.DAO.PagamentoDAO");
+            return (PagamentoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/PagamentoDAO!com.br.pi.model.DAO.PagamentoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
@@ -259,7 +263,17 @@ public class ContratoCommand implements Command{
     private ServicoDAO lookupServicoDAOBean() {
         try {
             Context c = new InitialContext();
-            return (ServicoDAO) c.lookup("java:global/Interdisciplinar/Interdisciplinar-ejb/ServicoDAO!com.br.pi.model.DAO.ServicoDAO");
+            return (ServicoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/ServicoDAO!com.br.pi.model.DAO.ServicoDAO");
+        } catch (NamingException ne) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
+            throw new RuntimeException(ne);
+        }
+    }
+
+    private ContratoDAO lookupContratoDAOBean1() {
+        try {
+            Context c = new InitialContext();
+            return (ContratoDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/ContratoDAO!Contrato.ContratoDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
@@ -269,12 +283,14 @@ public class ContratoCommand implements Command{
     private UsuarioDAO lookupUsuarioDAOBean() {
         try {
             Context c = new InitialContext();
-            return (UsuarioDAO) c.lookup("java:global/Interdisciplinar/Interdisciplinar-ejb/UsuarioDAO!com.br.pi.model.DAO.UsuarioDAO");
+            return (UsuarioDAO) c.lookup("java:global/ProjInterdisc/ProjInterdisc-ejb/UsuarioDAO!Afiliacao.UsuarioDAO");
         } catch (NamingException ne) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", ne);
             throw new RuntimeException(ne);
         }
     }
+
+    
 
    
 

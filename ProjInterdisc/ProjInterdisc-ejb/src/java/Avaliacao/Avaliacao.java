@@ -98,22 +98,6 @@ public class Avaliacao implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Avaliacao)) {
-            return false;
-        }
-        Avaliacao other = (Avaliacao) object;
-        if ((this.idAvaliacao == null && other.idAvaliacao != null) || (this.idAvaliacao != null && !this.idAvaliacao.equals(other.idAvaliacao))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "orcamento.Avaliacao[ idAvaliacao=" + idAvaliacao + " ]";
-    }
+   
     
 }

@@ -115,22 +115,6 @@ public class Item implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Item)) {
-            return false;
-        }
-        Item other = (Item) object;
-        if ((this.idItem == null && other.idItem != null) || (this.idItem != null && !this.idItem.equals(other.idItem))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "orcamento.Item[ idItem=" + idItem + " ]";
-    }
+   
     
 }
