@@ -20,23 +20,25 @@
         <title>iFix</title>
     </head>
     <body>
-        
-    <c:import url="menu.jsp"></c:import>
-    <div id="main">
-        <div id="conteudo">
-            <h1 class="title">Tempo de Execução</h1>
-            
-           
-            <form class="formulario" action="Controller" method="POST">
-                
-                <input type="hidden" name="command" value="Orcamento.setTempoExec"/>
-                <p>Digite o tempo de execução: <input type="text" name="tempoExec" placeholder="Tempo de Execução" required/></p>
-                <br><br>    
-                <p><input type="submit" value="CONFIRMAR"/></p>
-                
-            </form>
-        </div>
-    </div>
+
+        <c:import url="menu.jsp"></c:import>
+            <div id="main">
+                <div id="conteudo" style="margin-top: 200px;">
+                    <h1 class="title">Tempo de Execução</h1>
+
+
+                    <form class="formulario" action="Controller" method="POST">
+
+                        <input type="hidden" name="command" value="Orcamento.setTempoExec"/>
+                        <p>Digite o tempo de execução: <input type="text" name="tempoExec" placeholder="Tempo de Execução" 
+                                                              required style="border-bottom: 2px solid #C20114;margin-top: 25px;"/></p>
+                        <br><br>    
+                        <p><input type="submit" value="CONFIRMAR" style="width: 110px;"/></p>
+
+                    </form>
+                </div>
+            </div>
+        <c:import url="footer.jsp"></c:import>
     </body>
 </html>
 

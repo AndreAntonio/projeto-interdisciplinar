@@ -18,46 +18,59 @@ and open the template in the editor.
 }
 
 body{
-    
-    background-color: #ecf0f1;
+
+    background-color: #EBEBEB;
 }
 
 
 
 header{
-    
     background-color: #607D8B;
     display:flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px;
+    border-bottom: 3px solid #000000;   
+}
+
+footer{
+    border-top: 3px solid #000000;
+    position: fixed; 
+    bottom: 0; 
+    background-color: #607D8B;    
+    padding: 20px;
+    left: 00px; 
+    right: 00px;  
+    text-align: center;
 }
 
 
 #menu{
-   
-    
+
+
 }
- 
+
 #main{
+
     margin: 10px;
     margin-left:  200px;
     margin-right:  200px;
-    background-color: #ecf0f1;
+    background-color: #EBEBEB;
     min-height: 78.5%;
     display:flex;
     justify-content: flex-start;
-    
+
 }
 
 
 .title{
-    
+    text-align: center;
     padding: 5px;
+    padding-bottom: 10px;
     margin-bottom:  10px;
-    border-bottom: 1px solid #34495E;
+    border-bottom: 2px solid #34495E;
     width: 1000px;
-    
+
 }
 
 table {
@@ -69,6 +82,11 @@ th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #a1a1a1;
+}
+
+#conteudo{
+    margin-left:  120px;
+    text-align: center;
 }
 
 tr:hover{background-color:#f5f5f5}

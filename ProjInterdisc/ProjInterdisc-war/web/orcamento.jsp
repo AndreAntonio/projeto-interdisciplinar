@@ -17,22 +17,23 @@
         
     <c:import url="menu.jsp"></c:import>
     <div id="main">
-        <div id="conteudo">
+        <div id="conteudo" style="margin-top: 200px;">
             <h1 class="title">Dados iniciais do orçamento</h1>
             
-            <div>
-                <p>Nome do fornecedor de serviços: ${user.nome}</p><br>
-                <p>Nome do cliente que solicitou orçamento: ${clienteSelect.nome}</p><br>
-                <p>Tipo de serviço solicitado: ${servicoSolicitado}</p><br>
+            <div style="margin-top: 30px;">
+                <p><b>Nome do fornecedor de serviços:</b> ${user.nome}</p><br>
+                <p><b>Nome do cliente que solicitou orçamento:</b> ${clienteSelect.nome}</p><br>
+                <p><b>Tipo de serviço solicitado:</b> ${servicoSolicitado}</p><br>
             </div>
             
             <form class="formulario" action="Controller" method="POST">
                 
                 <input type="hidden" name="command" value="Orcamento.startOrcamento"/>
-                <p><input type="submit" value="PRÓXIMO"/></p>
+                <p style="margin-top: 15px;"><input type="submit" value="PRÓXIMO" style="width: 110px;"/></p>
                 
             </form>
         </div>
     </div>
+    <c:import url="footer.jsp"></c:import>
     </body>
 </html>

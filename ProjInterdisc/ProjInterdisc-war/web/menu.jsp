@@ -9,8 +9,8 @@
 <nav id="menu">
     <header>
         <h1>iFix</h1>
-        <a>Orçamento</a>
-        <a>Negociação</a>
-        <a>Prévia</a>
+        <a><b>Orçamento</b></a>
+        <a><b>Negociação</b></a>
+        <a><b>Prévia</b></a>
     </header>
 </nav>

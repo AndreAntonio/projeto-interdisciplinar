@@ -14,48 +14,49 @@
         <title>iFix</title>
     </head>
     <body>
-        
-    <c:import url="menu.jsp"></c:import>
-    <div id="main">
-        <div id="conteudo">
-            <h1 class="title">Resumo do orçamento</h1>
-            
-            <p>Nome do fornecedor de serviços: ${user.nome}</p><br>
-            <p>Nome do cliente que solicitou orçamento: ${clienteSelect.nome}</p><br>
-            <p>Tipo de serviço solicitado: ${servicoSolicitado}</p><br>
-            <p>Tempo de execução: ${orcamento.tempoexecucao}</p>
-            
-            
-            
-             <table>
-            <c:if test="${orcamento.getItemList().isEmpty()== false}">
-                <tr style="background-color: #607D8B">
-                    <td>Descrição do item</td>
-                    <td>Valor unitário</td>
-                    <td>Quantidade</td>                    
-                </tr>
-              
-                <c:forEach items="${orcamento.getItemList()}" var="item">
-                    <tr>
-                        <td>${item.getDescricao()}</td>
-                        <td>${item.getValor()}</td>
-                        <td>${item.getQuantidade()}</td>                       
-                    </tr>
+
+        <c:import url="menu.jsp"></c:import>
+            <div id="main">
+                <div id="conteudo">
+                    <h1 class="title">Resumo do orçamento</h1>
+
+                    <div style="margin-top: 30px;">
+                    <p><b>Nome do fornecedor de serviços:</b> ${user.nome}</p><br>
+                    <p><b>Nome do cliente que solicitou orçamento:</b> ${clienteSelect.nome}</p><br>
+                    <p><b>Tipo de serviço solicitado:</b> ${servicoSolicitado}</p><br>
+                    <p><b>Tempo de execução:</b> ${orcamento.tempoexecucao}</p>
+                </div>
                 
-                </c:forEach>
-                    <tr style="background-color: #607D8B">
-                        <td></td>                        
-                        <td>Valor Total:</td>
-                        <td>${orcamento.getValortot()}</td>
-                    </tr>
-            </c:if>  
-             </table><br><br>
-             
-            <form method="POST" action="Controller" style="float:right;">
-                <input type="submit" value="Confirmar Orcamento"/>
-                <input type="hidden" name="command" value="Orcamento.confirmaOrcamento"/>
-            </form>
+                <table style="border-top: 3px solid #93ACB5;border-bottom: 3px solid #93ACB5;margin-top: 30px;">
+                    <c:if test="${orcamento.getItemList().isEmpty()== false}">
+                        <tr style="background-color: #607D8B">
+                            <td>Descrição do item</td>
+                            <td>Valor unitário</td>
+                            <td>Quantidade</td>                    
+                        </tr>
+
+                        <c:forEach items="${orcamento.getItemList()}" var="item">
+                            <tr>
+                                <td>${item.getDescricao()}</td>
+                                <td><p style="float: left">R$</p>${item.getValor()}</td>
+                                <td>${item.getQuantidade()}</td>                       
+                            </tr>
+
+                        </c:forEach>
+                        <tr style="background-color: #607D8B">
+                            <td></td>                        
+                            <td>Valor Total:</td>
+                            <td><p style="float: left">R$</p>${orcamento.getValortot()}</td>
+                        </tr>
+                    </c:if>  
+                </table><br><br>
+
+                <form method="POST" action="Controller">
+                    <input type="submit" value="Confirmar Orçamento" style="width: 200px"/>
+                    <input type="hidden" name="command" value="Orcamento.confirmaOrcamento"/>
+                </form>
+            </div>
         </div>
-    </div>
+        <c:import url="footer.jsp"></c:import>
     </body>
 </html>
