@@ -57,7 +57,7 @@ public class NotaFiscalCommand implements Command{
     private HttpServletRequest request;
     private HttpServletResponse response;
     
-    private long id  = 1; 
+    private long id  = 4; 
                  
 
     @Override
@@ -68,68 +68,88 @@ public class NotaFiscalCommand implements Command{
     }
     @Override
     public void execute() {
-        Contrato contrato = new Contrato();
-        Orcamento orcamento = new Orcamento();
-        Item item = new Item();
-        Pagamento pagamento = new Pagamento();
+//        Contrato contrato = new Contrato();
+//        Orcamento orcamento = new Orcamento();
+//        Item item = new Item();
+//        Pagamento pagamento = new Pagamento();
         Usuario fornecedor = new Usuario();
-        
-                fornecedor.setCpf("1");
-                fornecedor.setIdUsuario((long)1);
-                fornecedor.setNome("FonecedorX");
+//                long idfornecedor = 1;
+//                fornecedor.setCpf("1");
+//                fornecedor.setIdUsuario(idfornecedor);
+//                fornecedor.setNome("FonecedorX");
+//                fornecedor.setTipo("Fornecedor");
+//                fornecedor.setSenha("123");
+//                
+//                
+//                
+//                Usuario cliente = new Usuario();
+//                cliente.setCpf("1234");
+//                cliente.setIdUsuario((long)2);
+//                cliente.setNome("ClienteX");
+//                cliente.setTipo("Cliente");
+//                cliente.setSenha("123");
+//        
+//                usuarioDAO.create(cliente);
+//                usuarioDAO.create(fornecedor);
+//                
+//        item.setDescricao("Mao de Obra");
+//        item.setQuantidade(1);
+//        item.setValor(320.50);
+//        
+//        itemDAO.create(item);
+//        
+//               
+//        orcamento.setStatus("Terminado");
+//        orcamento.setValortot(320.50);
+//        orcamento.setTempoexecucao("15 dias");
+//        orcamento.addItem(item);
+//        
+//        orcamentoDAO.create(orcamento);
+//        
+//        pagamento.setIdPagamento((long)1);
+//        pagamento.setPreco(320.50);
+//        pagamento.setTipo(1);
+//        pagamento.setFkCliente(cliente);
+//        
+//        pagamentoDAO.create(pagamento);
+//        
+//        
+//        contrato.setIdContratoCliente(cliente);
+//        contrato.setOrcamento(orcamento);
+//        contrato.setTermodocontrato("Termo de Contrato");
+//        contrato.addPagamento(pagamento);
+//        
+//        
+//        contratoDAO.create(contrato);
+//        
+//        Notafiscal notafiscal = new Notafiscal();
+//        
+//        notafiscal.setCustoTotal(320.50);
+//        notafiscal.setDataEmissao(new Date());
+//        notafiscal.setFkContrato(contrato);
+//        
+//        notaFiscalDAO.create(notafiscal);
+                 long idfornecedor = 1;
+                 long iditem = 1;
+                 long iditem2 = 3;
+                 int trabalhos = notaFiscalDAO.Quantidade();
+                Pagamento pagamento = pagamentoDAO.readById(idfornecedor);
+                Item item = itemDAO.readById(iditem);
+                Item item2 = itemDAO.readById(iditem2);
+                fornecedor.setCpf("157.438.603.12");
+                fornecedor.setIdUsuario(idfornecedor);
+                fornecedor.setNome("Rodrigo da Silva");
                 fornecedor.setTipo("Fornecedor");
                 fornecedor.setSenha("123");
-                
-                
-                
-                Usuario cliente = new Usuario();
-                cliente.setCpf("1234");
-                cliente.setIdUsuario((long)2);
-                cliente.setNome("ClienteX");
-                cliente.setTipo("Cliente");
-                cliente.setSenha("123");
-        
-                usuarioDAO.create(cliente);
-                usuarioDAO.create(fornecedor);
-                
-        item.setDescricao("Mao de Obra");
-        item.setQuantidade(1);
-        item.setValor(320.50);
-        
-        itemDAO.create(item);
-        
-               
-        orcamento.setStatus("Terminado");
-        orcamento.setValortot(320.50);
-        orcamento.setTempoexecucao("15 dias");
-        orcamento.addItem(item);
-        
-        orcamentoDAO.create(orcamento);
-        
-        pagamento.setIdPagamento((long)1);
-        pagamento.setPreco(320.50);
-        pagamento.setTipo(1);
-        pagamento.setFkCliente(cliente);
-        
-        pagamentoDAO.create(pagamento);
-        
-        
-        contrato.setIdContratoCliente(cliente);
-        contrato.setOrcamento(orcamento);
-        contrato.setTermodocontrato("Termo de Contrato");
-        contrato.addPagamento(pagamento);
-        
-        
-        contratoDAO.create(contrato);
-        
-        Notafiscal notafiscal = new Notafiscal();
-        
-        notafiscal.setCustoTotal(320.50);
-        notafiscal.setDataEmissao(new Date());
-        notafiscal.setFkContrato(contrato);
-        
-        notaFiscalDAO.create(notafiscal);
+
+        Notafiscal notafiscal = notaFiscalDAO.readById(id);// esse id = 4 veja no seu banco
         request.getSession().setAttribute("Nota_Fiscal", notafiscal);
+        request.getSession().setAttribute("Fornecedor", fornecedor);
+        request.getSession().setAttribute("Item", item);
+        request.getSession().setAttribute("Item2", item2);
+        request.getSession().setAttribute("Pagamento", pagamento);
+        request.getSession().setAttribute("Trabalhos", trabalhos);
+        
         responsePage = "index.jsp";
     }
 

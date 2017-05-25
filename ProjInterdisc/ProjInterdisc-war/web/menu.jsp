@@ -8,9 +8,20 @@
 
 <nav id="menu">
     <header>
-        <h1>iFix</h1>
-        <a>Orçamento</a>
-        <a>Negociação</a>
-        <a>Prévia</a>
+        
+         <img src="ifix.png"/>
+        
+        <a id="botao2" href="index.jsp">Nota Fiscal</a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a></a>
+        <a id="botao" href="Faturamento.jsp">Dados Gerais</a>
+        <a></a>
+        <a></a>
     </header>
 </nav>
